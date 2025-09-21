@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHiLDS ㅤOFㅤ MELODiES</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .stretched-text {
+      font-size: 2.1rem;
+      font-weight: bold;
+      text-transform: none;
+      transform: scaleY(6.8); /* вытягивание по высоте */
+      display: inline-block;
+      letter-spacing: 8px;
+      margin: 40px 0 20px; /* сверху и снизу */
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 40vh;
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      margin: -50px auto 0; /* отступ сверху после бегущей строки */
+      width: 500px;
+    }
+
+    /* 🔹 Бесконечная бегущая строка */
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: black;
+      white-space: nowrap;
+      margin: 100px 0;
+      padding: 15px 0;
+    }
+
+    .marquee-content {
+      display: inline-flex;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-content span {
+      margin: 0 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    @keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-30%); }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="stretched-text">CHiLDS ㅤOFㅤ MELODiES</h1>
+
+    <!-- 🔹 Бегущая строка с артистами -->
+    <section class="marquee">
+      <div class="marquee-content">
+        <!-- оригинал -->
+        <span>BULLY</span>
+        <span>FAITHMAUCH</span>
+        <span>YLANNEE</span>
+        <span>TRYBOY</span>
+        <span>N3KKET</span>
+        <span>AL3ZER</span>
+        <span>TRIPP</span>
+
+        <!-- копия -->
+        <span>BULLY</span>
+        <span>FAITHMAUCH</span>
+        <span>YLANNEE</span>
+        <span>TRYBOY</span>
+        <span>N3KKET</span>
+        <span>AL3ZER</span>
+        <span>TRIPP</span>
+
+        <!-- ещё копия -->
+        <span>BULLY</span>
+        <span>FAITHMAUCH</span>
+        <span>YLANNEE</span>
+        <span>TRYBOY</span>
+        <span>N3KKET</span>
+        <span>AL3ZER</span>
+        <span>TRIPP</span>
+
+        <!-- ещё копия2 -->
+        <span>BULLY</span>
+        <span>FAITHMAUCH</span>
+        <span>YLANNEE</span>
+        <span>TRYBOY</span>
+        <span>N3KKET</span>
+        <span>AL3ZER</span>
+        <span>TRIPP</span>
+
+        <!-- ещё копия3 -->
+        <span>BULLY</span>
+        <span>FAITHMAUCH</span>
+        <span>YLANNEE</span>
+        <span>TRYBOY</span>
+        <span>N3KKET</span>
+        <span>AL3ZER</span>
+        <span>TRIPP</span>
+      </div>
+    </section>
+
+    <img src="images/com.logo.png" alt="CHiLDS ㅤOFㅤ MELODiES" class="logo">
+  </header>
+ 
+  <!-- Список артистов и продюсеров -->
+  <main>
+    <section>
+      <h1>ARTiST'S</h1>
+      <ul class="artists">
+        <li data-artist="faithmauch">faithmauch</li>
+        <li data-artist="bully">bully</li>
+        <li data-artist="ylannee">ylannee</li>
+        <li data-artist="n3kket">n3kket</li>
+        <li data-artist="tryboy">TRYBOY</li>
+        <li data-artist="al3zer">AL3ZER</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Продюсеры</h2>
+      <ul class="producers">
+        <li data-producer="tripp">tripp</li>
+        <li data-producer="slitee">slitee</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Карточка артиста -->
+  <div id="artist-card" class="hidden">
+    <div class="card-content">
+      <span id="close">&times;</span>
+      <img id="artist-photo" src="" alt="Фото артиста">
+      <h3 id="artist-name"></h3>
+      <p><a id="artist-link" href="#" target="_blank">Соцсети</a></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
