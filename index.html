@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHiLDS OF MELODiES</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =============================== */
+    /* Видео на фоне */
+    #background-video {
+      position: fixed;       /* фиксируем видео на фоне */
+      top: 0;
+      left: 0;
+      width: 100%;           /* растягиваем по ширине */
+      height: 100%;          /* растягиваем по высоте */
+      object-fit: cover;     /* видео заполнит экран без искажений */
+      z-index: -1;           /* отправляем видео на задний план */
+    }
+
+    /* =============================== */
+    /* Заставка */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9); /* пока черная, исчезнет при клике */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+      font-weight: bold;
+      letter-spacing: 8px;
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    #splash.fade-out {
+      opacity: 0;
+    }
+
+    /* =============================== */
+    /* Общие стили сайта */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      text-align: center;
+      background: black; /* на случай, если видео не загрузится */
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 40vh;
+      text-align: center;
+    }
+
+    .stretched-text {
+      font-size: 2.1rem;
+      font-weight: bold;
+      text-transform: none;
+      transform: scaleY(6.8);
+      display: inline-block;
+      letter-spacing: 8px;
+      margin: 40px 0 20px;
+    }
+
+    .logo {
+      display: block;
+      margin: -50px auto 0;
+      width: 500px;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    .logo:active { transform: scale(0.9); }
+
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: transparent; /* фон теперь прозрачный, видео видно */
+      white-space: nowrap;
+      margin: 100px 0;
+      padding: 15px 0;
+    }
+    .marquee-content {
+      display: inline-flex;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-content span {
+      margin: 0 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-30%); }
+    }
+
+    /* Карточка артиста */
+    #artist-card {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    #artist-card.show {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .card-content {
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 300px;
+      position: relative;
+    }
+    #close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    #artist-photo {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    ul.artists, ul.producers {
+      list-style: none;
+      padding: 0;
+    }
+    ul.artists li, ul.producers li {
+      cursor: pointer;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      transition: color 0.3s, transform 0.3s;
+    }
+    ul.artists li:hover, ul.producers li:hover {
+      color: #ff00ff;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-version">v1.0</div>
+
+  <!-- Видео на фоне -->
+  <video id="background-video" autoplay muted loop>
+    <source src="videos/background_space.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <!-- Заставка CLiCK! -->
+  <div id="splash">CLiCK!</div>
+
+  <!-- Основной контент -->
+  <div id="main-content">
+    <header>
+      <h1 class="stretched-text">CHiLDS ㅤOFㅤ MELODiES</h1>
+
+      <section class="marquee">
+        <div class="marquee-content">
+          <span>BULLY</span>
+          <span>FAITHMAUCH</span>
+          <span>YLANNEE</span>
+          <span>TRYBOY</span>
+          <span>N3KKET</span>
+          <span>AL3ZER</span>
+          <span>TRIPP</span>
+          <span>SLITEE</span>
+
+          <span>BULLY</span>
+          <span>FAITHMAUCH</span>
+          <span>YLANNEE</span>
+          <span>TRYBOY</span>
+          <span>N3KKET</span>
+          <span>AL3ZER</span>
+          <span>TRIPP</span>
+          <span>SLITEE</span>
+
+          <span>BULLY</span>
+          <span>FAITHMAUCH</span>
+          <span>YLANNEE</span>
+          <span>TRYBOY</span>
+          <span>N3KKET</span>
+          <span>AL3ZER</span>
+          <span>TRIPP</span>
+          <span>SLITEE</span>
+        </div>
+      </section>
+
+      <img src="images/com.logo.png" alt="CHiLDS ㅤOFㅤ MELODiES" class="logo">
+    </header>
+
+    <main>
+      <section>
+        <h1>ARTiSTS</h1>
+        <ul class="artists">
+          <li data-artist="faithmauch">faithmauch</li>
+          <li data-artist="bully">bully</li>
+          <li data-artist="ylannee">ylannee</li>
+          <li data-artist="n3kket">n3kket</li>
+          <li data-artist="tryboy">TRYBOY</li>
+          <li data-artist="al3zer">AL3ZER</li>
+        </ul>
+      </section>
+      <section>
+        <h1>PRODUCERS</h1>
+        <ul class="producers">
+          <li data-producer="tripp">tripp</li>
+          <li data-producer="slitee">slitee</li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Карточка артиста -->
+    <div id="artist-card">
+      <div class="card-content">
+        <span id="close">&times;</span>
+        <img id="artist-photo" src="" alt="Фото артиста">
+        <h3 id="artist-name"></h3>
+        <p><a id="artist-link" href="#" target="_blank">iNSTAGRAM</a></p>
+      </div>
+    </div>
+
+    <!-- Аудио -->
+    <audio id="background-music" src="sounds/main_sound2.mp3" loop></audio>
+  </div>
+
+  <script>
+    // ==============================
+    const splash = document.getElementById('splash');
+    const mainContent = document.getElementById('main-content');
+    const music = document.getElementById('background-music');
+
+    splash.addEventListener('click', () => {
+      splash.classList.add('fade-out');
+      setTimeout(() => {
+        splash.style.display = 'none';
+        mainContent.classList.add('show');
+        music.play().catch(e => console.log("Автоплей заблокирован:", e));
+      }, 500);
+    });
+
+    const artists = {
+      faithmauch: { name: "faithmauch", photo: "images/faithmauch.jpg", link: "https://www.instagram.com/faithmauch/" },
+      bully: { name: "bully", photo: "images/bully.png", link: "https://instagram.com/bullyinnovator/" },
+      ylannee: { name: "ylannee", photo: "images/ylannee.png", link: "https://instagram.com/ylanneex/" },
+      tryboy: { name: "TRYBOY", photo: "images/tryboy.jpg", link: "https://instagram.com/tryb0y/" },
+      n3kket: { name: "n3kket", photo: "images/n3kket.jpg", link: "https://instagram.com/n3kketcannibal/" },
+      al3zer: { name: "AL3ZER", photo: "images/al3zer.png", link: "https://instagram.com/al3zer_luv" },
+      tripp: { name: "tripp", photo: "images/tripp.png", link: "https://instagram.com/trippycarsxn/" },
+      slitee: { name: "slitee", photo: "images/slitee.png", link: "https://instagram.com/ssslitee/" },
+    };
+
+    const card = document.getElementById("artist-card");
+const artistName = document.getElementById("artist-name");
+const artistPhoto = document.getElementById("artist-photo");
+const artistLink = document.getElementById("artist-link");
+const closeBtn = document.getElementById("close");
+
+// объединяем артисты и продюсеры
+const allItems = document.querySelectorAll(".artists li, .producers li");
+
+allItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const key = item.getAttribute("data-artist") || item.getAttribute("data-producer");
+    const artist = artists[key];
+    if (!artist) return;
+
+    artistName.textContent = artist.name;
+    artistPhoto.src = artist.photo;
+    artistLink.href = artist.link;
+
+    card.classList.add("show");
+  });
+});
+
+    closeBtn.addEventListener("click", () => {
+      card.classList.remove("show");
+    });
+
+    const logo = document.querySelector('.logo');
+    const logoSound = new Audio('sounds/fart.mp3');
+
+    logo.addEventListener('click', () => {
+      logoSound.currentTime = 0;
+      logoSound.play();
+      logo.classList.add('logo-press');
+      setTimeout(() => logo.classList.remove('logo-press'), 200);
+    });
+  </script>
+</body>
+</html>
